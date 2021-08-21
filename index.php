@@ -47,7 +47,7 @@
         <img class="d-img" src="image/IMG_4466.jpeg" alt="Reginald Ejike" />
         <h1>Reginald Ejike</h1>
         <h4>Backend Developer</h4>
-        <a href="contact.html">Contact me</a>
+        <a href="contact.php">Contact me</a>
       </aside>
       <article>
         <div>
