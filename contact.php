@@ -4,7 +4,7 @@
   use PHPMailer\PHPMailer\SMTP;
   use PHPMailer\PHPMailer\Exception;
 
-  require 'vendor/autoload.php';
+  require './vendor/autoload.php';
 
 
 
@@ -32,11 +32,16 @@
       }else{
         //recipient email
         try{
+          $body = "<h4>Email</h4><p>'.$email'.</p>
+            <h4>Mobile Number</h4><p>'.$mobile_number'.</p>
+            <h4>Message</h4><p>'.$message'.</p>
+          ";
           $mail->SMTPDebug = 2;
           $mail->isSMTP();
-          $mail->HOST = "ping smtp.gmail.com";
+          $mail->HOST = "smtp.gmail.com";
           $mail->SMTPAuth = true;
-          $mail->SMTPSecure =  PHPMailer::ENCRYPTION_STARTTLS; 
+          $mail->SMTPSecure =  PHPMailer::ENCRYPTION_STARTTLS;
+          $mail->SMTPAutoTLS = false; 
           $mail->Port = "587";
           $mail->Username = "reginaldejike3@gmail.com";
           $mail->Password = "1234must";
@@ -44,10 +49,7 @@
           $mail->addAddress("dono4executive@gmail.com", 'Reginald');
           $mail-> isHTML(true);
           $mail->Subject = 'Contact information';
-          $mail->Body = "<h4>Email</h4><p>'.$email'.</p>
-            <h4>Mobile Number</h4><p>'.$mobile_number'.</p>
-            <h4>Message</h4><p>'.$message'.</p>
-        ";
+          $mail->Body = $body;
         $mail -> Send();
         $msg = "You information has been sent";
         $msg_class = "alert-success";
